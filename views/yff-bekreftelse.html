@@ -1,0 +1,153 @@
+<a name="pageTop"></a>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--2-col"></div>
+    <div id ="documentCard" class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-color-text--black">
+            {{>student-profile-card}}
+        </div>
+            <div class="mdl-card__supporting-text mdl-color-text--black">
+                <form action="/yff/brreg" id="lookupOrganisasjonForm">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                        <input class="mdl-textfield__input" type="text" name="query" id="brregQuery">
+                        <label class="mdl-textfield__label" for="brregQuery">Søk etter virksomheten hvor eleven skal på utplassering. Du kan søke på virksomhetsnavn eller organisasjonsnummer.</label>
+                    </div>
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="organisasjonsnummer" id="lookupOrganisasjonsButton">
+                        <i class="material-icons" id="searchIcon">search</i>
+                    </label>
+                </form>
+                <div class="mdl-typography--headline bedriftsVelger">Velg virksomhet</div>
+                <div id="lookupMessages" class="warningColor systemmsg"></div>
+                <div id="lookupWrapper" class="bedriftsVelger"></div>
+                <form action="/yff/{{student.personalIdNumber}}" method="post" id="submitDocumentForm">
+                    <input type="hidden" name="skjemaUtfyllingStart" value="{{skjemaUtfyllingStart}}">
+                    <input type="hidden" name="studentFirstName" value="{{student.firstName}}">
+                    <input type="hidden" name="studentMiddleName" value="{{student.middleName}}">
+                    <input type="hidden" name="studentLastName" value="{{student.lastName}}">
+                    <input type="hidden" name="studentName" value="{{student.fullName}}">
+                    <input type="hidden" name="studentUserName" value="{{student.userName}}">
+                    <input type="hidden" name="studentMail" value="{{student.mail}}">
+                    <input type="hidden" name="studentPhone" value="{{student.mobilePhone}}">
+                    <input type="hidden" name="studentMainGroupName" value="{{student.mainGroupName}}">
+                    <input type="hidden" name="schoolId" value="{{student.unitId}}">
+                    <input type="hidden" name="schoolName" value="{{student.unitName}}">
+                    <input type="hidden" name="schoolPhone" value="{{student.unitPhone}}">
+                    <input type="hidden" name="organizationNumber" value="{{student.organizationNumber}}">
+                    <input type="hidden" name="type" value="yff-bekreftelse">
+                    <div id="bedriftsinfoWrapper" class="bedriftsinfoWrapper">
+                        <div class="mdl-typography--headline">Virksomhetsinformasjon</div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="organisasjonsNummer" type="text" id="organisasjonsNummer" readonly>
+                            <label class="mdl-textfield__label" for="organisasjonsNummer">Virksomhetens organisasjonsnummer</label>
+                        </div><br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="organisasjonsNavn" type="text" id="organisasjonsNavn" readonly>
+                            <label class="mdl-textfield__label" for="organisasjonsNavn">Navn</label>
+                        </div><br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="organisasjonsAdresse" type="text" id="organisasjonsAdresse" readonly>
+                            <label class="mdl-textfield__label" for="organisasjonsAdresse">Adresse</label>
+                        </div><br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="organisasjonsPostnummer" type="text" id="organisasjonsPostnummer" readonly>
+                            <label class="mdl-textfield__label" for="organisasjonsPostnummer">Postnummer</label>
+                        </div><br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="organisasjonsPoststed" type="text" id="organisasjonsPoststed" readonly>
+                            <label class="mdl-textfield__label" for="organisasjonsPoststed">Poststed</label>
+                        </div><br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="organisasjonsAvdeling" type="text" id="organisasjonsAvdeling">
+                            <label class="mdl-textfield__label" for="organisasjonsAvdeling">Avdeling</label>
+                        </div><br/>
+                        <div class="mdl-typography--headline contactPerson">Kontaktperson</div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" type="text" name="kontaktpersonNavn" id="kontaktpersonNavn" required>
+                            <label class="mdl-textfield__label" for="kontaktpersonNavn">Kontaktperson</label>
+                        </div><br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" type="text" name="kontaktpersonTelefon" id="kontaktpersonTelefon" required>
+                            <label class="mdl-textfield__label" for="kontaktpersonTelefon">Telefon</label>
+                        </div><br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" type="text" name="kontaktpersonAvdeling" id="kontaktpersonAvdeling">
+                            <label class="mdl-textfield__label" for="kontaktpersonAvdeling">Avdeling</label>
+                        </div><br/>
+                        <button title="Legg til flere kontaktpersoner" class="mdl-button mdl-js-button mdl-button--colored mdl-color-text--black addPersonButton" id="addContactPersonButton">Legg til flere kontaktpersoner</button>
+                        <div class="mdl-typography--headline">Tidsrom</div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="startDato" type="date" id="startDato" value="{{thisDay}}">
+                            <label class="mdl-textfield__label" for="startDato">Fra og med</label>
+                        </div><br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="sluttDato" type="date" id="sluttDato" value="{{thisDay}}">
+                            <label class="mdl-textfield__label" for="sluttDato">Til og med</label>
+                        </div>
+                        <div class="mdl-typography--headline">Arbeidstid</div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="daysPerWeek" type="number" id="daysPerWeek" value="5">
+                            <label class="mdl-textfield__label" for="daysPerWeek">Antall dager i uken</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="startTid" type="time" id="startTid" value="08:00">
+                            <label class="mdl-textfield__label" for="startTid">Fra kl</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="sluttTid" type="time" id="sluttTid" value="16:00">
+                            <label class="mdl-textfield__label" for="sluttTid">Til kl</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" name="oppmotested" type="text" id="oppmotested">
+                            <label class="mdl-textfield__label" for="oppmotested">Oppmøtested</label>
+                        </div>
+                        <h1>Elevinformasjon</h1>
+                        {{>class-levels-list}}
+                        {{>yff-utdanningsprogrammer-list}}
+                        <div class="mdl-typography--headline nextOfKin margin-top-10">Pårørende</div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" type="text" name="parorendeNavn" id="parorendeNavn" required>
+                            <label class="mdl-textfield__label" for="parorendeNavn">Navn</label>
+                        </div><br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width90">
+                            <input class="mdl-textfield__input" type="text" name="parorendeTelefon" id="parorendeTelefon" required>
+                            <label class="mdl-textfield__label" for="parorendeTelefon">Telefon</label>
+                        </div><br/>
+                        <button title="Legg til flere pårørende" class="mdl-button mdl-js-button mdl-button--colored mdl-color-text--black addPersonButton" id="addNextOfKinButton">Legg til flere pårørende</button>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a href="/yff/{{student.userName}}" id="deleteContract" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color-text--black" title="Avbryt og gå til YFF forsiden for {{student.fullName}}"><i class="material-icons">delete</i></a>
+                        <div class="mdl-layout-spacer"></div>
+                        <a href="/yff/{{student.userName}}" id="backToYffMain" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color-text--black" title="Trykk her for å gå tilbake til YFF forsiden for {{student.fullName}}"><i class="material-icons">playlist_add</i></a>
+                        <span class="margin-right-5"></span>
+                        <button type="submit" formaction="/yff/preview/{{student.personalIdNumber}}" formmethod="post" formtarget="previewFrame" value="1" id="previewDocumentButton" title="Forhåndsvis bekreftelsen for {{student.fullName}}" name="previewBekreftelse" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color-text--black material-icons">description</button>
+                        <span class="margin-right-5"></span>
+                        <button type="submit" value="1" id="submitFormButton" title="Send brevet digitalt til elev og bedrift. Det arkiveres automatisk i {{student.fullName}}s elevmappe." name="submitContract" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color-text--black material-icons">mail_outline</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col"></div>
+    <div id="modalPreview" class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-shadow--2dp">
+        <div class="mdl-card__actions mdl-card--border-bottom">
+            <div class="mdl-layout-spacer"></div>
+            <button title="Lukk forhåndsvisning for {{student.fullName}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color-text--black material-icons closePreviewButton">close</button>
+        </div>
+        <div id="previewContainer" class="mdl-card__supporting-text"></div>
+        <div class="mdl-card__actions mdl-card--border">
+            <div class="mdl-layout-spacer"></div>
+            <button title="Lukk forhåndsvisning for {{student.fullName}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color-text--black material-icons closePreviewButton">close</button>
+        </div>
+    </div>
+</div>
+
+<!-- serialize -->
+<script src="/public/js/serialize-0.2.js"></script>
+<!-- Helperscript preview -->
+<script src="/public/js/generate-preview.js"></script>
+<!-- Helperscript for form -->
+<script src="/public/js/yff-information-form.js"></script>
+<!-- Date input polyfill -->
+<script src="/public/js/date-input-polyfill.dist.js"></script>
+<!-- uuid -->
+<script src="/public/js/vendors/uuid.js"></script>
+<!-- Axios -->
+<script src="/public/js/vendors/axios.min.js"></script>

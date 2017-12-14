@@ -1,0 +1,29 @@
+<div class="mdl-grid">
+    <div id ="documentCard" class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-color-text--black">
+            {{>student-profile-card}}
+        </div>
+        <div class="mdl-card__supporting-text mdl-color-text--black">
+            {{>yff-plan-kompetansemaal-velger}}
+            {{>yff-plan-linjer}}
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a href="/yff/{{student.userName}}" id="backToYff" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color-text--black" title="Det du nå har opprett i Lokal læreplan er nå lagret. Trykk her for å avslutte og gå tilbake til YFF forsiden for {{student.fullName}}"><i class="material-icons">delete</i></a>
+            <div class="mdl-layout-spacer"></div>
+            <a href="/yff/{{student.userName}}" id="backToYffMain" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color-text--black" title="Trykk her for å gå tilbake til YFF forsiden for {{student.fullName}}"><i class="material-icons">playlist_add</i></a>
+            <span class="margin-right-5"></span>
+            <a href="/yff/plan/{{student.userName}}" id="goToLareplan" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color-text--black" title="Gå til utsending og arkivering av lokal læreplan for {{student.fullName}}"><i class="material-icons">forward</i></a>
+        </div>
+    </div>
+</div>
+
+<!-- serialize -->
+<script src="/public/js/serialize-0.2.min.js"></script>
+<!-- Helperscript for form -->
+<script src="/public/js/yff-maal-form.js"></script>
+<!-- Date input polyfill -->
+<script src="/public/js/date-input-polyfill.dist.js"></script>
+<!-- uuid -->
+<script src="/public/js/vendors/uuid.js"></script>
+<!-- Axios -->
+<script src="/public/js/vendors/axios.min.js"></script>

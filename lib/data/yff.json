@@ -1,0 +1,60 @@
+{
+  "evaluation": [
+    {
+      "id": "hms",
+      "description": "Eleven følger retningslinjer og HMS innenfor fagområdet"
+    },
+    {
+      "id": "respekt-retningslinjer",
+      "description": "Eleven viser gode holdninger og respekt for opplæringsstedets regler og retningslinjer"
+    },
+    {
+      "id": "respekt-mennesker",
+      "description": "Eleven viser gode holdninger og respekt for mennesker de møter under utplasseringen"
+    },
+    {
+      "id": "tilpasningsdyktig",
+      "description": "Eleven er tilpasningsdyktig og greier å samarbeide"
+    },
+    {
+      "id": "kommunikasjon",
+      "description": "Eleven har kommunikasjonsevner i møte med kollegaer, kunder og brukere"
+    },
+    {
+      "id": "veiledning",
+      "description": "Eleven tar imot veiledning"
+    },
+    {
+      "id": "oppfylle",
+      "description": "Eleven utfører tildelte arbeidsoppgaver"
+    },
+    {
+      "id": "initiativ",
+      "description": "Eleven viser initiativ og interesse for arbeidet"
+    }
+  ],
+  "order": [
+    {
+      "id": "orden",
+      "description": "Orden (punktlighet)"
+    },
+    {
+      "id": "atferd",
+      "description": "Atferd (holdninger, respekt)"
+    }
+  ],
+  "utplasseringsSted": [
+    {
+      "id": "bedrift",
+      "description": "Virksomhet"
+    },
+    {
+      "id": "skole",
+      "description": "Skole"
+    },
+    {
+      "id": "ub",
+      "description": "Ungdomsbedrift (entreprenørskap)"
+    }
+  ]
+}
