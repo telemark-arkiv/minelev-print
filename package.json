@@ -1,6 +1,6 @@
 {
   "name": "minelev-print",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "web frontend for printing from MinElev",
   "license": "MIT",
   "private": true,
