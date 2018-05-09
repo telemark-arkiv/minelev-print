@@ -44,8 +44,8 @@ module.exports.generateDocument = async (request, reply) => {
       reply(error)
     } else {
       reply(pdf)
-      .header('Content-Type', 'application/pdf')
-      .header('Content-Disposition', 'attachment; filename=' + fileName)
+        .header('Content-Type', 'application/pdf')
+        .header('Content-Disposition', 'attachment; filename=' + fileName)
     }
   })
 }

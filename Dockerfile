@@ -1,5 +1,5 @@
-# Setting the base to nodejs 8.9.4
-FROM node:8.11.1-alpine@sha256:d0febbb04c15f58a28888618cf5c3f1d475261e25702741622f375d0a82e050d
+# Setting the base to nodejs 10.1.0
+FROM node:10.1.0-alpine
 
 #### Begin setup ####
 
